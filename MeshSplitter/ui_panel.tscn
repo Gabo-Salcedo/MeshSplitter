@@ -1,0 +1,206 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjgietxu54iea"]
+
+[ext_resource type="Script" uid="uid://cvvaljik71qqt" path="res://addons/MeshSplitter/ui_panel.gd" id="1"]
+
+[node name="UiPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "🔧 Model Splitter"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SourceRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/SourceRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Source File:"
+
+[node name="FilePathEdit" type="LineEdit" parent="VBoxContainer/SourceRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+placeholder_text = "Select a .glb or .gltf file"
+
+[node name="BrowseButton" type="Button" parent="VBoxContainer/SourceRow"]
+layout_mode = 2
+text = "Browse..."
+
+[node name="OutputRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/OutputRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Output Dir:"
+
+[node name="OutputPathEdit" type="LineEdit" parent="VBoxContainer/OutputRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+text = "res://"
+placeholder_text = "Output directory for split components"
+
+[node name="BrowseOutputButton" type="Button" parent="VBoxContainer/OutputRow"]
+layout_mode = 2
+text = "Browse..."
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="StructureRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/StructureRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Folder Structure:"
+
+[node name="StructureOption" type="OptionButton" parent="VBoxContainer/StructureRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+selected = 0
+item_count = 3
+popup/item_0/text = "Organized (mesh/, materials/, anims/)"
+popup/item_0/id = 0
+popup/item_1/text = "Flat with Prefixes (mesh_name.tres, mat_name.tres)"
+popup/item_1/id = 1
+popup/item_2/text = "Single Folder (all files together)"
+popup/item_2/id = 2
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ComponentsRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ComponentsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Extract:"
+
+[node name="ComponentsGrid" type="GridContainer" parent="VBoxContainer/ComponentsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+columns = 2
+
+[node name="MeshesCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+layout_mode = 2
+button_pressed = true
+text = "Meshes"
+
+[node name="MaterialsCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+layout_mode = 2
+button_pressed = true
+text = "Materials"
+
+[node name="RigCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+layout_mode = 2
+button_pressed = true
+text = "Rig"
+
+[node name="AnimationsCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+layout_mode = 2
+button_pressed = true
+text = "Animations"
+
+[node name="SceneCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+layout_mode = 2
+button_pressed = true
+text = "Clean Scene"
+
+[node name="TexturesCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+layout_mode = 2
+button_pressed = true
+text = "Textures"
+
+[node name="HSeparator3b" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="OverwriteCheck" type="CheckBox" parent="VBoxContainer/OptionsRow"]
+layout_mode = 2
+text = "Overwrite existing files"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/OptionsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewButton" type="Button" parent="VBoxContainer/OptionsRow"]
+layout_mode = 2
+text = "👁 Preview"
+
+[node name="HSeparator3c" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ProcessButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "🚀 Split Model"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+max_value = 1.0
+value = 0.5
+show_percentage = false
+indeterminate = true
+editor_preview_indeterminate = false
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Ready to process models"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="InfoLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b]Supported Formats:[/b] GLB, GLTF
+
+[b]What it does:[/b]
+• Extracts meshes as individual files
+• Separates materials into .tres resources
+• Exports animations individually + library
+• Detects and documents skeleton rig
+• Creates clean scene with preserved hierarchy
+
+[b]Folder Structure Options:[/b]
+• Organized: mesh/, materials/, anims/ subfolders
+• Flat: all files with type prefixes (mesh_, mat_, anim_)
+• Single: all files together in one folder"
+fit_content = true
+scroll_active = false
