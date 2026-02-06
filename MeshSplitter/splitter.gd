@@ -37,9 +37,6 @@ static func preview_model(source_path: String) -> Dictionary:
 	preview.model_name = source_path.get_file().get_basename()
 	preview.node_count = _count_nodes(root)
 	
-	preview.model_name = source_path.get_file().get_basename()
-	preview.node_count = _count_nodes(root)
-	
 	var mesh_nodes = _find_nodes_by_type(root, MeshInstance3D)
 	for mesh_node in mesh_nodes:
 		if mesh_node.mesh:
@@ -48,9 +45,6 @@ static func preview_model(source_path: String) -> Dictionary:
 				vertex_count = mesh_node.mesh.get_faces().size()
 			preview.meshes.append({
 				"name": mesh_node.name,
-				"vertex_count": vertex_count
-			})
-	
 				"vertex_count": vertex_count
 			})
 	
@@ -71,13 +65,8 @@ static func preview_model(source_path: String) -> Dictionary:
 					})
 					material_set[mat] = true
 	
-					material_set[mat] = true
-	
 	var skeleton = _find_node_by_type(root, Skeleton3D)
 	if skeleton:
-		preview.rig.exists = true
-		preview.rig.bone_count = skeleton.get_bone_count()
-	
 		preview.rig.exists = true
 		preview.rig.bone_count = skeleton.get_bone_count()
 	
@@ -109,14 +98,23 @@ static func split_model(
 		"warnings": []
 	}
 	
+	# Set default options
+	var default_options = {
+		"extract_meshes": true,
+		"extract_materials": true,
+		"extract_rig": true,
+		"extract_animations": true,
+		"extract_scene": true,
 		"extract_textures": true,
 		"overwrite": false
 	}
 	
+	# Merge user options with defaults
 	for key in default_options:
 		if not options.has(key):
 			options[key] = default_options[key]
 	
+	# Validate source file
 	if not FileAccess.file_exists(source_path):
 		result.error = "Source file not found: " + source_path
 		return result
@@ -139,17 +137,11 @@ static func split_model(
 		root.queue_free()
 		return result
 	
-		root.queue_free()
-		return result
-	
 	var manifest = {
 		"source": source_path,
 		"timestamp": Time.get_datetime_string_from_system(),
 		"model_name": model_name,
 		"structure_type": structure_type,
-		"options": options
-	}
-	
 		"options": options
 	}
 	
@@ -186,9 +178,6 @@ static func split_model(
 	
 	if options.extract_scene:
 		manifest["scene"] = _create_clean_scene(root, base_dir, model_name)
-	else:
-		manifest["scene"] = {"path": "", "node_count": 0}
-	
 	else:
 		manifest["scene"] = {"path": "", "node_count": 0}
 	

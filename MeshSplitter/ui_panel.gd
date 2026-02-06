@@ -39,8 +39,6 @@ func _ready():
 	status_label = get_node("VBoxContainer/StatusLabel")
 	progress_bar = get_node("VBoxContainer/ProgressBar")
 	
-	progress_bar = get_node("VBoxContainer/ProgressBar")
-	
 	var grid = "VBoxContainer/ComponentsRow/ComponentsGrid/"
 	meshes_check = get_node(grid + "MeshesCheck")
 	materials_check = get_node(grid + "MaterialsCheck")
@@ -50,15 +48,16 @@ func _ready():
 	textures_check = get_node(grid + "TexturesCheck")
 	overwrite_check = get_node("VBoxContainer/OptionsRow/OverwriteCheck")
 	
-	overwrite_check = get_node("VBoxContainer/OptionsRow/OverwriteCheck")
-	
 	file_dialog = EditorFileDialog.new()
 	file_dialog.file_mode = EditorFileDialog.FILE_MODE_OPEN_FILE
 	file_dialog.access = EditorFileDialog.ACCESS_RESOURCES
-	file_dialog.add_filter("*.glb, *.gltf", "3D Models")
+	file_dialog.add_filter("*.glb, *.gltf, *.fbx", "3D Models")
 	file_dialog.file_selected.connect(_on_source_file_selected)
 	add_child(file_dialog)
 	
+	output_dialog = EditorFileDialog.new()
+	output_dialog.file_mode = EditorFileDialog.FILE_MODE_OPEN_DIR
+	output_dialog.access = EditorFileDialog.ACCESS_RESOURCES
 	output_dialog.dir_selected.connect(_on_output_dir_selected)
 	add_child(output_dialog)
 	
@@ -68,6 +67,8 @@ func _ready():
 	preview_dialog.size = Vector2i(600, 400)
 	add_child(preview_dialog)
 	
+	source_browse_btn.pressed.connect(_on_browse_source)
+	output_browse_btn.pressed.connect(_on_browse_output)
 	process_btn.pressed.connect(_on_process_model)
 	preview_btn.pressed.connect(_on_preview_model)
 	
@@ -107,6 +108,13 @@ func _on_output_dir_selected(path: String):
 func _on_preview_model():
 	var source = source_file_path.text.strip_edges()
 	
+	if source.is_empty():
+		_update_status("Error: Please select a source file", Color.RED)
+		return
+	
+	var preview_info = MeshSplitter.preview_model(source)
+	
+	if preview_info.has("error"):
 		_update_status("Preview failed: " + preview_info.error, Color.RED)
 		return
 	
@@ -151,13 +159,9 @@ func _on_preview_model():
 	preview_dialog.popup_centered()
 	
 	_update_status("Preview loaded", Color.GREEN)
-
-	_update_status("Preview loaded", Color.GREEN)
 	
 func _on_process_model():
 	var source = source_file_path.text.strip_edges()
-	var output = output_path.text.strip_edges()
-	
 	var output = output_path.text.strip_edges()
 	
 	if source.is_empty():
@@ -173,10 +177,8 @@ func _on_process_model():
 		return
 	
 	var ext = source.get_extension().to_lower()
-	if not ext in ["glb", "gltf"]:
-		_update_status("Error: Only GLB/GLTF formats supported currently", Color.ORANGE)
-		return
-	
+	if not ext in ["glb", "gltf", "fbx"]:
+		_update_status("Error: Only GLB/GLTF/FBX formats supported", Color.ORANGE)
 		return
 	
 	var model_name = source.get_file().get_basename()
@@ -186,10 +188,18 @@ func _on_process_model():
 		_update_status(msg, Color.ORANGE)
 		return
 	
+	var structure_type = structure_option.selected
+	var options = {
+		"extract_meshes": meshes_check.button_pressed,
+		"extract_materials": materials_check.button_pressed,
+		"extract_rig": rig_check.button_pressed,
+		"extract_animations": animations_check.button_pressed,
+		"extract_scene": scene_check.button_pressed,
+		"extract_textures": textures_check.button_pressed,
 		"overwrite": overwrite_check.button_pressed
 	}
 	
-	var result = ModelSplitter.split_model(source, output, structure_type, options)
+	var result = MeshSplitter.split_model(source, output, structure_type, options)
 	
 	progress_bar.visible = false
 	process_btn.disabled = false
@@ -206,8 +216,6 @@ func _on_process_model():
 		# Show warnings if any
 		if result.warnings.size() > 0:
 			summary += "\n⚠ %d warnings (see console)" % result.warnings.size()
-		
-		_update_status(summary, Color.GREEN if result.warnings.size() == 0 else Color.YELLOW)
 		
 		_update_status(summary, Color.GREEN if result.warnings.size() == 0 else Color.YELLOW)
 		

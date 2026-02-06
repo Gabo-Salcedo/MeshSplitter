@@ -44,7 +44,7 @@ text = "Source File:"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
-placeholder_text = "Select a .glb or .gltf file"
+placeholder_text = "Select a .glb, .gltf or .fbx file"
 
 [node name="BrowseButton" type="Button" parent="VBoxContainer/SourceRow"]
 layout_mode = 2
@@ -189,7 +189,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[b]Supported Formats:[/b] GLB, GLTF
+text = "[b]Supported Formats:[/b] GLB, GLTF, FBX
 
 [b]What it does:[/b]
 • Extracts meshes as individual files

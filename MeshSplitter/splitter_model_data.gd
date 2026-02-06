@@ -1,6 +1,6 @@
 @tool
 extends Resource
-class_name SplitterModelData
+class_name MeshSplitterModelData
 
 ## Container resource for split model components
 ## Holds references to all extracted resources while keeping them as standard files
@@ -26,7 +26,7 @@ class_name SplitterModelData
 @export var has_rig: bool = false
 
 func _init():
-	resource_name = "SplitterModelData"
+	resource_name = "MeshSplitterModelData"
 
 func get_summary() -> String:
 	var summary = "Model: %s\n" % model_name
