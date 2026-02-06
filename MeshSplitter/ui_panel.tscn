@@ -96,46 +96,75 @@ popup/item_2/id = 2
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
+[node name="PresetsRow" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PresetsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quick Presets:"
+
+[node name="PresetAllButton" type="Button" parent="VBoxContainer/PresetsRow"]
+layout_mode = 2
+text = "⚡ All"
+tooltip_text = "Extract everything"
+
+[node name="PresetMeshesButton" type="Button" parent="VBoxContainer/PresetsRow"]
+layout_mode = 2
+text = "🎨 Meshes"
+tooltip_text = "Extract only meshes and materials"
+
+[node name="PresetAnimsButton" type="Button" parent="VBoxContainer/PresetsRow"]
+layout_mode = 2
+text = "🎬 Anims"
+tooltip_text = "Extract animations and rig only"
+
+[node name="HSeparator3a" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
 [node name="ComponentsRow" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ComponentsRow"]
+[node name="ComponentsToggle" type="CheckButton" parent="VBoxContainer/ComponentsRow"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Extract:"
+button_pressed = true
+text = "Extract Components"
 
-[node name="ComponentsGrid" type="GridContainer" parent="VBoxContainer/ComponentsRow"]
+[node name="ComponentsContentRow" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ComponentsGrid" type="GridContainer" parent="VBoxContainer/ComponentsContentRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
 columns = 2
 
-[node name="MeshesCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+[node name="MeshesCheck" type="CheckBox" parent="VBoxContainer/ComponentsContentRow/ComponentsGrid"]
 layout_mode = 2
 button_pressed = true
 text = "Meshes"
 
-[node name="MaterialsCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+[node name="MaterialsCheck" type="CheckBox" parent="VBoxContainer/ComponentsContentRow/ComponentsGrid"]
 layout_mode = 2
 button_pressed = true
 text = "Materials"
 
-[node name="RigCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+[node name="RigCheck" type="CheckBox" parent="VBoxContainer/ComponentsContentRow/ComponentsGrid"]
 layout_mode = 2
 button_pressed = true
 text = "Rig"
 
-[node name="AnimationsCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+[node name="AnimationsCheck" type="CheckBox" parent="VBoxContainer/ComponentsContentRow/ComponentsGrid"]
 layout_mode = 2
 button_pressed = true
 text = "Animations"
 
-[node name="SceneCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+[node name="SceneCheck" type="CheckBox" parent="VBoxContainer/ComponentsContentRow/ComponentsGrid"]
 layout_mode = 2
 button_pressed = true
 text = "Clean Scene"
 
-[node name="TexturesCheck" type="CheckBox" parent="VBoxContainer/ComponentsRow/ComponentsGrid"]
+[node name="TexturesCheck" type="CheckBox" parent="VBoxContainer/ComponentsContentRow/ComponentsGrid"]
 layout_mode = 2
 button_pressed = true
 text = "Textures"
@@ -154,15 +183,24 @@ text = "Overwrite existing files"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PreviewButton" type="Button" parent="VBoxContainer/OptionsRow"]
-layout_mode = 2
-text = "👁 Preview"
-
 [node name="HSeparator3c" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="ProcessButton" type="Button" parent="VBoxContainer"]
+[node name="ButtonsRow" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/ButtonsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "✖ Cancel"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/ButtonsRow"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="ProcessButton" type="Button" parent="VBoxContainer/ButtonsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "🚀 Split Model"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
@@ -174,6 +212,12 @@ show_percentage = false
 indeterminate = true
 editor_preview_indeterminate = false
 
+[node name="ProgressText" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "⏳ Processing..."
+horizontal_alignment = 1
+
 [node name="StatusLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -184,23 +228,13 @@ autowrap_mode = 3
 [node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="InfoLabel" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+[node name="PreviewLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[b]Supported Formats:[/b] GLB, GLTF, FBX
+text = "[b]Model Preview[/b]
 
-[b]What it does:[/b]
-• Extracts meshes as individual files
-• Separates materials into .tres resources
-• Exports animations individually + library
-• Detects and documents skeleton rig
-• Creates clean scene with preserved hierarchy
-
-[b]Folder Structure Options:[/b]
-• Organized: mesh/, materials/, anims/ subfolders
-• Flat: all files with type prefixes (mesh_, mat_, anim_)
-• Single: all files together in one folder"
+Select a 3D model to see its components..."
 fit_content = true
-scroll_active = false
+scroll_active = true
