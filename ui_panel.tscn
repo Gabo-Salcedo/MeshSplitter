@@ -1,0 +1,565 @@
+[gd_scene format=3 uid="uid://cjgietxu54iea"]
+
+[ext_resource type="Script" uid="uid://dpv6mlxywdpjw" path="res://addons/MeshSplitter/ui_panel.gd" id="1"]
+[ext_resource type="Theme" uid="uid://ckthyyqafkkts" path="res://addons/MeshSplitter/assets/Theme/MeshSplitter.tres" id="1_241tg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_241tg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aocv8"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7i17"]
+bg_color = Color(0.12630185, 0.26158124, 0.25038892, 1)
+
+[node name="UiPanel" type="Panel" unique_id=1865436288]
+custom_minimum_size = Vector2(700, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_241tg")
+script = ExtResource("1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1127639833]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contact" type="HBoxContainer" parent="VBoxContainer" unique_id=1143155881]
+modulate = Color(1, 1, 1, 0.3372549)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Twitter" type="Button" parent="VBoxContainer/Contact" unique_id=1438448542]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_241tg")
+text = "   Twitter    "
+
+[node name="GitHub" type="Button" parent="VBoxContainer/Contact" unique_id=3611827]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_241tg")
+text = "   GitHub    "
+
+[node name="GitHub2" type="Button" parent="VBoxContainer/Contact" unique_id=1100546459]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_241tg")
+text = "   Patreon    "
+
+[node name="MarginSplutter" type="MarginContainer" parent="VBoxContainer" unique_id=2051112888]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 12
+
+[node name="MainVBox" type="VBoxContainer" parent="VBoxContainer/MarginSplutter" unique_id=78150207]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OutputFile" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox" unique_id=546928490]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.39
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile" unique_id=1007257653]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.7875
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer" unique_id=1743981381]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Ready to process models"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="OuputFile" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer" unique_id=1999737341]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/OuputFile" unique_id=542329558]
+modulate = Color(1, 1, 1, 0.34901962)
+layout_mode = 2
+text = "Output File"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/OuputFile" unique_id=1675403790]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer" unique_id=156911562]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SourceRow" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer" unique_id=1700680442]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/SourceRow" unique_id=265796914]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Source File:"
+
+[node name="FilePathEdit" type="LineEdit" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/SourceRow" unique_id=10102535]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+placeholder_text = "Select a .glb, .gltf or .fbx file"
+
+[node name="BrowseButton" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/SourceRow" unique_id=1152256101]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse..."
+
+[node name="OutputRow" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer" unique_id=699815088]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/OutputRow" unique_id=1098791138]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Output Dir:"
+
+[node name="OutputPathEdit" type="LineEdit" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/OutputRow" unique_id=33554461]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+text = "res://"
+placeholder_text = "Output directory for split components"
+
+[node name="BrowseOutputButton" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/OutputRow" unique_id=313083995]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Browse..."
+
+[node name="StructureFolder" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer" unique_id=559298818]
+layout_mode = 2
+
+[node name="OptionsRow" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/StructureFolder" unique_id=1655554321]
+layout_mode = 2
+
+[node name="StructureLabel" type="Label" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/StructureFolder/OptionsRow" unique_id=1964887181]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Structure:"
+
+[node name="StructureOption" type="OptionButton" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/StructureFolder/OptionsRow" unique_id=1204769841]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130.175, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "📂 Organized"
+popup/item_0/id = 0
+popup/item_1/text = "Flat"
+popup/item_1/id = 1
+popup/item_2/text = "Single"
+popup/item_2/id = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/StructureFolder/OptionsRow" unique_id=1716775840]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OverwriteCheck" type="CheckBox" parent="VBoxContainer/MarginSplutter/MainVBox/OutputFile/VBoxContainer/StructureFolder/OptionsRow" unique_id=1536284810]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Overwrite existing files"
+
+[node name="TypeObject" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox" unique_id=477094269]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.63
+
+[node name="Type Object" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject" unique_id=2068394112]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 656.0
+offset_bottom = 38.0
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject/Type Object" unique_id=19137294]
+modulate = Color(1, 1, 1, 0.34901962)
+layout_mode = 2
+text = "Type Object"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject/Type Object" unique_id=871897858]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ComponentsGrid" type="GridContainer" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject" unique_id=1224256954]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 44.0
+offset_right = 656.0
+offset_bottom = 102.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+columns = 4
+
+[node name="SceneTag2" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject/ComponentsGrid" unique_id=1561422908]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+tooltip_text = "Extract animations and rig only"
+toggle_mode = true
+text = "  All"
+alignment = 0
+
+[node name="SceneTag" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject/ComponentsGrid" unique_id=1897085042]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+tooltip_text = "Extract animations and rig only"
+toggle_mode = true
+text = "🎬 Scene"
+alignment = 0
+
+[node name="MeshTag" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject/ComponentsGrid" unique_id=1908953649]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+tooltip_text = "Extract only meshes and materials"
+toggle_mode = true
+text = "🧊 Mesh    "
+
+[node name="MaterialTag" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject/ComponentsGrid" unique_id=1157619025]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Extract only meshes and materials"
+toggle_mode = true
+text = "🟡 Material  "
+
+[node name="AnimationLibraryTag" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject/ComponentsGrid" unique_id=1186218261]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Extract animations and rig only"
+toggle_mode = true
+text = "🎬 Anim. Library  "
+
+[node name="AnimationLibraryTag2" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject/ComponentsGrid" unique_id=458992899]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Extract animations and rig only"
+toggle_mode = true
+text = "🎞️ Animatios"
+
+[node name="RigTag" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/TypeObject/ComponentsGrid" unique_id=679986839]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Extract animations and rig only"
+toggle_mode = true
+text = " 💀 Rig scene"
+alignment = 0
+
+[node name="MeshType" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox" unique_id=740784209]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.19
+
+[node name="TitleMeshType" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/MeshType" unique_id=240939523]
+layout_mode = 0
+offset_top = -28.0
+offset_right = 656.0
+offset_bottom = 6.0
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginSplutter/MainVBox/MeshType/TitleMeshType" unique_id=1847934111]
+modulate = Color(1, 1, 1, 0.34901962)
+layout_mode = 2
+text = "Mesh Type"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/MarginSplutter/MainVBox/MeshType/TitleMeshType" unique_id=1858478461]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 34
+
+[node name="HBoxButtoms" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/MeshType" unique_id=817697163]
+layout_mode = 0
+offset_top = 12.0
+offset_right = 656.0
+offset_bottom = 39.0
+theme_override_constants/separation = 32
+
+[node name="MeshType" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/MeshType/HBoxButtoms" unique_id=1795036433]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginSplutter/MainVBox/MeshType/HBoxButtoms/MeshType" unique_id=1447312108]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🧊 Mesh Type:"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginSplutter/MainVBox/MeshType/HBoxButtoms/MeshType" unique_id=497135832]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_aocv8")
+
+[node name="MeshTypeTres" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/MeshType/HBoxButtoms/MeshType" unique_id=1409205562]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "♦️.Tres "
+
+[node name="MeshTypeRes" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/MeshType/HBoxButtoms/MeshType" unique_id=1833549077]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "♦️ .Res"
+
+[node name="MeshTypeMesh" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/MeshType/HBoxButtoms/MeshType" unique_id=1841344230]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "♦️.Mesh "
+
+[node name="PreviewPanel" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox" unique_id=327548486]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel" unique_id=1875074977]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleMeshType" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer" unique_id=1297416053]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TitleMeshType" unique_id=1609031664]
+modulate = Color(1, 1, 1, 0.34901962)
+layout_mode = 2
+text = "Mesh Type"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TitleMeshType" unique_id=1649469235]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 34
+
+[node name="TabBar" type="TabContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer" unique_id=1766067386]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Preview" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar" unique_id=1236836995]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/Preview" unique_id=1861535728]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PreviewLabel" type="RichTextLabel" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/Preview/MarginContainer" unique_id=815051014]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b]Model Preview[/b]
+
+Select a 3D model to see its components..."
+fit_content = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/Preview/MarginContainer" unique_id=1142713052]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/Preview/MarginContainer/ScrollContainer" unique_id=1065576577]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -3
+
+[node name="Tree" type="Tree" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/Preview/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1978744828]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+column_titles_visible = true
+allow_reselect = true
+allow_rmb_select = true
+
+[node name="🧊 Mesh" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar" unique_id=1765800231]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🧊 Mesh" unique_id=968513765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🧊 Mesh/MarginContainer" unique_id=6356964]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🧊 Mesh/MarginContainer/ScrollContainer" unique_id=1177900436]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -3
+
+[node name="MeshesCheck" type="CheckBox" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🧊 Mesh/MarginContainer/ScrollContainer/VBoxContainer" unique_id=2071682204]
+layout_mode = 2
+button_pressed = true
+text = "🧊 Name"
+
+[node name="🟡 Material" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar" unique_id=1251404975]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🟡 Material" unique_id=1306875221]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🟡 Material/MarginContainer" unique_id=1550941319]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🟡 Material/MarginContainer/ScrollContainer" unique_id=967636392]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -3
+
+[node name="MeshesCheck" type="CheckBox" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🟡 Material/MarginContainer/ScrollContainer/VBoxContainer" unique_id=431621423]
+layout_mode = 2
+button_pressed = true
+text = "🧊 Name"
+
+[node name="🎞️ Animations" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar" unique_id=1657771858]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🎞️ Animations" unique_id=565686976]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🎞️ Animations/MarginContainer" unique_id=1515967006]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🎞️ Animations/MarginContainer/ScrollContainer" unique_id=1320188999]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -3
+
+[node name="MeshesCheck" type="CheckBox" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🎞️ Animations/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1018801145]
+layout_mode = 2
+button_pressed = true
+text = "🎞️ Name"
+
+[node name="MeshesCheck2" type="CheckBox" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/🎞️ Animations/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1156158537]
+layout_mode = 2
+button_pressed = true
+text = "🎞️ Name"
+
+[node name="💀 Rig" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar" unique_id=477572312]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/💀 Rig" unique_id=1189412101]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/💀 Rig/MarginContainer2" unique_id=2100345344]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/💀 Rig/MarginContainer2/ScrollContainer" unique_id=127775210]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -3
+
+[node name="Tree" type="Tree" parent="VBoxContainer/MarginSplutter/MainVBox/PreviewPanel/VBoxContainer/TabBar/💀 Rig/MarginContainer2/ScrollContainer/VBoxContainer" unique_id=906986953]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+column_titles_visible = true
+allow_reselect = true
+allow_rmb_select = true
+
+[node name="ButtonsRow" type="HBoxContainer" parent="VBoxContainer/MarginSplutter/MainVBox" unique_id=1045138731]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/ButtonsRow" unique_id=1129003901]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/MarginSplutter/MainVBox/ButtonsRow" unique_id=501913450]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="ProcessButton" type="Button" parent="VBoxContainer/MarginSplutter/MainVBox/ButtonsRow" unique_id=1399930639]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_e7i17")
+text = "Split Model"

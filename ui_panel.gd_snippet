@@ -1,0 +1,26 @@
+func _on_all_tag_toggled(toggled: bool):
+	if not scene_tag: return
+	
+	# Block signals to prevent redundant updates while setting all
+	scene_tag.set_block_signals(true)
+	mesh_tag.set_block_signals(true)
+	material_tag.set_block_signals(true)
+	anim_lib_tag.set_block_signals(true)
+	anim_clip_tag.set_block_signals(true)
+	rig_tag.set_block_signals(true)
+	
+	scene_tag.button_pressed = toggled
+	mesh_tag.button_pressed = toggled
+	material_tag.button_pressed = toggled
+	anim_lib_tag.button_pressed = toggled
+	anim_clip_tag.button_pressed = toggled
+	rig_tag.button_pressed = toggled
+	
+	scene_tag.set_block_signals(false)
+	mesh_tag.set_block_signals(false)
+	material_tag.set_block_signals(false)
+	anim_lib_tag.set_block_signals(false)
+	anim_clip_tag.set_block_signals(false)
+	rig_tag.set_block_signals(false)
+	
+	_update_tag_bar()

@@ -1,0 +1,12 @@
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <!-- Folder base -->
+  <path d="M1 3C1 2.44772 1.44772 2 2 2H6L7 4H14C14.5523 4 15 4.44772 15 5V13C15 13.5523 14.5523 14 14 14H2C1.44772 14 1 13.5523 1 13V3Z" fill="#4a9eff" stroke="#2d7bdb" stroke-width="0.5"/>
+  
+  <!-- 3D Cube icon in the center -->
+  <g transform="translate(5, 6)">
+    <path d="M3 0 L6 1.5 L6 4.5 L3 6 L0 4.5 L0 1.5 Z" fill="#ffffff" opacity="0.9"/>
+    <path d="M3 0 L6 1.5 L3 3 L0 1.5 Z" fill="#ffffff"/>
+    <path d="M0 1.5 L0 4.5 L3 6 L3 3 Z" fill="#e0e0e0"/>
+    <path d="M3 3 L3 6 L6 4.5 L6 1.5 Z" fill="#f0f0f0"/>
+  </g>
+</svg>
